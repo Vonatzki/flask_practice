@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>User: {{ user.username }}</h1>
+  <hr>
+  {% if not posts %}
+    <p>User <em><b>{{ user.username }}</b></em> has no posts.</p>
+    <p>Click <a href="{{ url_for('create_post') }}">here</a> to create one.</p>
+  {% else %}
+    {% for post in posts %}
+    <p>{{ post.author.username }} says: <b>{{ post.body }}</b></p>
+    {% endfor %}
+  {% endif %}
+{% endblock %}
